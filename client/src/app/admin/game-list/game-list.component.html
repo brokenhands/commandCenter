@@ -1,0 +1,12 @@
+<div>
+    <h2>Game List</h2>
+    <ul>
+      <li *ngFor="let game of games">
+        {{ game.gameMode }} - {{ game.startTime }}
+        <button (click)="editGame(game._id)">Edit</button>
+        <button (click)="deleteGame(game._id)">Delete</button>
+      </li>
+    </ul>
+    <button (click)="newGame()">Create New Game</button>
+  </div>
+  
