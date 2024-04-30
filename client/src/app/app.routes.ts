@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GameListComponent } from './admin/game-list/game-list.component';
-import { GameDetailComponent } from './admin/game-detail/game-detail.component';
+import { GameListComponent } from './components/admin/game-list/game-list.component';
+import { GameDetailComponent } from './components/admin/game-detail/game-detail.component';
 import { ParticipationComponent } from './components/participation/participation.component';
+import { GameDeleteComponent } from './components/admin/game-delete/game-delete.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/games', pathMatch: 'full' },
@@ -12,7 +13,7 @@ export const routes: Routes = [
   { path: 'admin/games', component: GameListComponent },
   { path: 'admin/game/new', component: GameDetailComponent },
   { path: 'admin/game/edit/:id', component: GameDetailComponent },  // Reuse for edit
-  //{ path: 'admin/game/delete/:id', component: GameDeleteComponent }  // Optional
+  { path: 'admin/game/delete/:id', component: GameDeleteComponent }  // Optional
 ];
 
 @NgModule({

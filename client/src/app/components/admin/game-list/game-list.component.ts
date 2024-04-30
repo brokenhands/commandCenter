@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from "@angular/common";
-import { GameService } from '../../services/game.service';
-import { Game } from '../../models';
+import { GameService } from '../../../services/game.service';
+import { Game } from '../../../models';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
@@ -37,7 +37,7 @@ export class GameListComponent implements OnInit {
   }
 
   deleteGame(id: string): void {
-    // Implementation needed
+    this.router.navigate(['/admin/game/delete', id]);
   }
 
   newGame(): void {
