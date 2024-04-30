@@ -4,6 +4,9 @@ import { GameService } from '../../services/game.service';
 import { Game } from '../../models';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-game-list',
@@ -11,7 +14,12 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./game-list.component.scss'],
   providers: [DatePipe],
   standalone:true,
-  imports:[CommonModule]
+  imports: [
+    CommonModule,
+    MatListModule,
+    MatButtonModule,
+    MatIconModule
+  ]
 })
 export class GameListComponent implements OnInit {
   games: Game[] = [];
