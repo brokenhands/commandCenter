@@ -78,3 +78,14 @@ app.get('/participations', async (req, res) => {
     res.status(500).send(error);
   }
 });
+
+console.log('******************************')
+console.log('commandCenter is ready')
+console.log('******************************')
+console.log('Current available APIs:')
+console.log(app._router.stack.map(r => {
+  if (r.route) {
+      return Object.getOwnPropertyNames(r.route.methods)[0].toUpperCase() + ' ' + r.route.path          
+  }
+  return null; // Filter out middleware or other non-route entries
+}).filter(item => item !== null));
