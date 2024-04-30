@@ -1,8 +1,12 @@
 <form [formGroup]="gameForm" (ngSubmit)="onSubmit($event)">
     <mat-form-field appearance="fill">
-    <mat-label>Admin ID</mat-label>
-    <input matInput formControlName="adminId">
-  </mat-form-field>
+      <mat-label>Admin</mat-label>
+      <mat-select formControlName="adminId">
+        <mat-option *ngFor="let user of users" [value]="user._id">
+          {{ user.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Game Mode</mat-label>

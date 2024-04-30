@@ -3,5 +3,6 @@ export interface User {
     name: string;
     callsign: string;
     role: string;  // 'admin' or 'player'
+    deleted?: boolean;
   }
   

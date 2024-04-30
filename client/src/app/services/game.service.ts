@@ -12,8 +12,9 @@ export class GameService {
 
   constructor(private http: HttpClient) { }
 
-  getGames(): Observable<Game[]> {
-    return this.http.get<Game[]>(`${this.baseUrl}/games`);
+  getGames(includeDeleted = false): Observable<Game[]> {
+    const url = `${this.baseUrl}/games${includeDeleted ? '?includeDeleted=true' : ''}`;
+    return this.http.get<Game[]>(url);
   }
 
   getGameById(id: string): Observable<Game> {
