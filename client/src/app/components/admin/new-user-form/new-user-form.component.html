@@ -1,24 +1,27 @@
 <div>
     <h2>Create New User</h2>
-    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-      <label>
-        Name:
-        <input type="text" formControlName="name">
-      </label>
-      <div *ngIf="userForm.get('name').errors && userForm.get('name').touched">
-        <small *ngIf="userForm.get('name').errors.required">Name is required.</small>
-        <small *ngIf="userForm.get('name').errors.minlength">Name must be at least 3 characters long.</small>
-      </div>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="user-form">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+        <mat-error *ngIf="userForm.get('name').hasError('required')">
+          Name is required.
+        </mat-error>
+        <mat-error *ngIf="userForm.get('name').hasError('minlength')">
+          Name must be at least 3 characters long.
+        </mat-error>
+      </mat-form-field>
   
-      <label>
-        Role:
-        <input type="text" formControlName="role">
-      </label>
-      <div *ngIf="userForm.get('role').errors && userForm.get('role').touched">
-        <small *ngIf="userForm.get('role').errors.required">Role is required.</small>
-      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Role</mat-label>
+        <input matInput formControlName="role">
+        <mat-error *ngIf="userForm.get('role')?.hasError('required')">
+          Role is required.
+        </mat-error>
+      </mat-form-field>
   
-      <button type="submit" [disabled]="!userForm.valid">Create User</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!userForm.valid">Create User</button>
     </form>
+    <h1>DOM BETTER</h1>
   </div>
   

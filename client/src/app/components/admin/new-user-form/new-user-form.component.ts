@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-new-user-form',
@@ -17,7 +18,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    CommonModule
   ]
 })
 export class NewUserFormComponent implements OnInit {
