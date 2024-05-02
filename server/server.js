@@ -172,6 +172,34 @@ app.delete('/users/:id', async (req, res) => {
   }
 });
 
+app.get('/users-by-game/:gameId', async (req, res) => {
+  const { gameId } = req.params;
+
+  try {
+    const participants = await Participation.aggregate([
+      { $match: { gameId: mongoose.Types.ObjectId(gameId) } },
+      {
+        $lookup: {
+          from: User.collection.name,
+          localField: 'userId',
+          foreignField: '_id',
+          as: 'userDetails'
+        }
+      },
+      {
+        $unwind: '$userDetails' // Unwinding is necessary because $lookup returns an array
+      },
+      {
+        $replaceRoot: { newRoot: '$userDetails' } // Makes the user details the root of the output documents
+      }
+    ]);
+
+    res.json(participants);
+  } catch (error) {
+    res.status(500).send({ message: "Failed to fetch users", error: error.message });
+  }
+});
+
 
 
 console.log('******************************')
