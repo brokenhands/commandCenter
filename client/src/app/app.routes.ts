@@ -7,6 +7,7 @@ import { GameDeleteComponent } from './components/admin/game-delete/game-delete.
 import { UserListComponent } from './components/admin/user-list/user-list.component';
 import { NewUserFormComponent } from './components/admin/new-user-form/new-user-form.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { GameViewComponent } from './components/game-view/game-view.component';
 
 export const routes: Routes = [
   { path: '', component: NavBarComponent, pathMatch: 'full' },
@@ -18,7 +19,8 @@ export const routes: Routes = [
   { path: 'admin/game/edit/:id', component: GameDetailComponent },  // Reuse for edit
   { path: 'admin/game/delete/:id', component: GameDeleteComponent },  // Optional
   { path: 'admin/users', component: UserListComponent },
-  { path: 'admin/new-user', component: NewUserFormComponent}
+  { path: 'admin/new-user', component: NewUserFormComponent},
+  { path: 'admin/game/view/:id', component: GameViewComponent}
 
 
 ];

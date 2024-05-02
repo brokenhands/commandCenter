@@ -32,6 +32,9 @@ export class GameListComponent implements OnInit {
     });
   }
 
+  viewGame(id: string): void {
+    this.router.navigate(['/admin/game/view', id]);
+  }
   editGame(id: string): void {
     this.router.navigate(['/admin/game/edit', id]);
   }

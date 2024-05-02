@@ -1,0 +1,12 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ game.gameMode }}</mat-card-title>
+      <mat-card-subtitle>{{ game.startTime | date:'short' }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Duration: {{ game.duration }} minutes</p>
+      <p>Status: {{ game.status }}</p>
+    </mat-card-content>
+
+    
+</mat-card>

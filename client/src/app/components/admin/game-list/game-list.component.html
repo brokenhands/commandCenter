@@ -10,6 +10,9 @@
       <button mat-icon-button (click)="deleteGame(game._id)" aria-label="Delete game">
         <mat-icon>delete</mat-icon>
       </button>
+      <button mat-icon-button (click)="viewGame(game._id)" aria-label="View game">
+        <mat-icon>visibility</mat-icon>
+      </button>
     </mat-list-item>
   </mat-nav-list>
   <button mat-raised-button color="primary" (click)="newGame()">Create New Game</button>
