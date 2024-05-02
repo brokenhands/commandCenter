@@ -4,7 +4,7 @@ import { GameService } from '../../services/game.service';
 import { RouterModule } from '@angular/router';
 import { Game, User } from '../../models';
 import { MatCardModule } from '@angular/material/card';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { GamePlayerListComponent } from '../game-player-list/game-player-list.component';
 import { FormGroup, FormBuilder, Validators,ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
@@ -14,7 +14,7 @@ import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-game-view',
   standalone: true,
-  imports: [RouterModule, MatCardModule, DatePipe, GamePlayerListComponent,MatSelectModule,ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, MatCardModule, DatePipe, GamePlayerListComponent,MatSelectModule,ReactiveFormsModule],
   templateUrl: './game-view.component.html',
   styleUrl: './game-view.component.scss'
 })
@@ -23,7 +23,8 @@ export class GameViewComponent {
     private gameService: GameService,
     private route: ActivatedRoute,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private fb: FormBuilder
   ){}
   gameId: string
   game: Game
@@ -38,6 +39,7 @@ export class GameViewComponent {
         this.game = game
       });
     }
+    this.playerForm = this.fb.group({playerId:[]});
     this.userService.getUsers().subscribe({
       next: (users) => this.users = users.filter(user => !user.deleted), // Assuming 'deleted' field marks soft-deleted users
       error: (err) => console.error('Error loading users:', err)

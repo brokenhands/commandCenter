@@ -1,4 +1,5 @@
-<mat-card ngIf="game">
+<div *ngIf="game">
+<mat-card>
     <mat-card-header>
       <mat-card-title>{{ game.gameMode }}</mat-card-title>
       <mat-card-subtitle>{{ game.startTime | date:'short' }}</mat-card-subtitle>
@@ -11,7 +12,7 @@
     
 </mat-card>
 
-<mat-card ngIf="users">
+<mat-card *ngIf="users">
   <mat-card-content>
     <form [formGroup]="playerForm" (ngSubmit)="onSubmit($event)">
       <mat-form-field appearance="fill">
@@ -22,9 +23,12 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Add to Game</button>
+
     </form>
   </mat-card-content>
 </mat-card>
 <h2>
   <app-game-players-list [gameId]="game._id" />
 </h2>
+</div>
