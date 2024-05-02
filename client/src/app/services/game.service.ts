@@ -37,10 +37,11 @@ export class GameService {
     return this.http.get(`${this.baseUrl}/users-by-game/${id}`);
   }
 
-  addPlayerToGame(playerId:string,gameId:string): Observable<any> {
+  addPlayerToGame(playerId:string, gameId:string, team:string): Observable<any> {
     return this.http.post(`${this.baseUrl}/participations/`, { 
-      playerId:playerId, 
-      gameId:gameId
+      userId:playerId, 
+      gameId:gameId,
+      team:team
     });
   }
 

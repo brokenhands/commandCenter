@@ -23,6 +23,18 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>team</mat-label>
+        <mat-select formControlName="team">
+          <mat-option [value]="'green'">
+            Green
+          </mat-option>
+          <mat-option [value]="'red'">
+            red
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
       <button mat-raised-button color="primary" type="submit">Add to Game</button>
 
     </form>

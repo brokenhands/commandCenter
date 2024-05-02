@@ -39,7 +39,7 @@ export class GameViewComponent {
         this.game = game
       });
     }
-    this.playerForm = this.fb.group({playerId:[]});
+    this.playerForm = this.fb.group({playerId:[],team:[]});
     this.userService.getUsers().subscribe({
       next: (users) => this.users = users.filter(user => !user.deleted), // Assuming 'deleted' field marks soft-deleted users
       error: (err) => console.error('Error loading users:', err)
@@ -49,7 +49,7 @@ export class GameViewComponent {
 
   onSubmit(event: Event): void {
     event.preventDefault();
-        this.gameService.addPlayerToGame(this.playerForm['playerId'], this.gameId).subscribe(() => {
+        this.gameService.addPlayerToGame(this.playerForm.value['playerId'], this.gameId,this.playerForm.value['team']).subscribe(() => {
           this.router.navigate(['/admin/games']);
         });
   }
