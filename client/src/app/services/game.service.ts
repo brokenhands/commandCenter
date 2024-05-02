@@ -36,4 +36,20 @@ export class GameService {
   getPlayersInGame(id: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/users-by-game/${id}`);
   }
+
+  addPlayerToGame(playerId:string,gameId:string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/participations/`, { 
+      playerId:playerId, 
+      gameId:gameId
+    });
+  }
+
+  removePlayerFromGame(playerId:string,gameId:string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/participations/`, { 
+      params:{
+        playerId:playerId, 
+        gameId:gameId
+      }       
+    });
+  }
 }
