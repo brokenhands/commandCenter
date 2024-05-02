@@ -97,6 +97,21 @@ app.post('/participations', async (req, res) => {
   }
 });
 
+app.delete('/participations', async (req, res) => {
+  const { userId, gameId } = req.query;
+
+  try {
+    const result = await Participation.findOneAndDelete({ userId, gameId });
+    if (result) {
+      res.status(200).send({ message: "Participant removed" });
+    } else {
+      res.status(404).send({ message: "Participant not found" });
+    }
+  } catch (error) {
+    res.status(400).send({ message: "Error removing participant", error: error.message });
+  }
+});
+
 // Get all participations for a game
 app.get('/participations', async (req, res) => {
   try {
@@ -156,6 +171,8 @@ app.delete('/users/:id', async (req, res) => {
       res.status(400).json({ message: "Error deleting user", error: error });
   }
 });
+
+
 
 console.log('******************************')
 console.log('commandCenter is ready')
