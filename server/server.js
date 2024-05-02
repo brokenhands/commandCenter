@@ -190,7 +190,12 @@ app.get('/users-by-game/:gameId', async (req, res) => {
         $unwind: '$userDetails' // Unwinding is necessary because $lookup returns an array
       },
       {
-        $replaceRoot: { newRoot: '$userDetails' } // Makes the user details the root of the output documents
+        $addFields: {
+          'userDetails.team': '$team' // Add team information to userDetails
+        }
+      },
+      {
+        $replaceRoot: { newRoot: '$userDetails' } // Makes the user details along with team info the root of the output documents
       }
     ]);
 
