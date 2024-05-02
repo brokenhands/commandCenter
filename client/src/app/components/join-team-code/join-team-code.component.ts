@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
   selector: 'app-join-team-code',
   standalone: true,
-  imports: [],
+  imports: [QRCodeModule],
   templateUrl: './join-team-code.component.html',
   styleUrl: './join-team-code.component.scss'
 })

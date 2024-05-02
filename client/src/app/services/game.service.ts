@@ -48,7 +48,7 @@ export class GameService {
   removePlayerFromGame(playerId:string,gameId:string): Observable<any> {
     return this.http.delete(`${this.baseUrl}/participations/`, { 
       params:{
-        playerId:playerId, 
+        userId:playerId, 
         gameId:gameId
       }       
     });

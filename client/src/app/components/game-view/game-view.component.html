@@ -1,5 +1,5 @@
 <div *ngIf="game">
-<mat-card>
+  <mat-card>
     <mat-card-header>
       <mat-card-title>{{ game.gameMode }}</mat-card-title>
       <mat-card-subtitle>{{ game.startTime | date:'short' }}</mat-card-subtitle>
@@ -8,9 +8,17 @@
       <p>Duration: {{ game.duration }} minutes</p>
       <p>Status: {{ game.status }}</p>
     </mat-card-content>
-
-    
-</mat-card>
+    <mat-card-actions>
+      <div>
+        <h3>Join Red</h3>
+        <qrcode [qrdata]="joinRedQRCode" [width]="256" [errorCorrectionLevel]="'M'" [routerLink]="['/','games','join-team',gameId,'red']"></qrcode>
+      </div>
+      <div>
+        <h3>Join Green</h3>
+        <qrcode [qrdata]="joinGreenQRCode" [width]="256" [errorCorrectionLevel]="'M'" [routerLink]="['/','games','join-team',gameId,'green']"></qrcode>
+      </div>
+    </mat-card-actions>
+  </mat-card>
 
 <mat-card *ngIf="users">
   <mat-card-content>
@@ -40,7 +48,8 @@
     </form>
   </mat-card-content>
 </mat-card>
-<h2>
-  <app-game-players-list [gameId]="game._id" />
-</h2>
+
+  <div>
+    <app-game-players-list [gameId]="game._id" />
+  </div>
 </div>

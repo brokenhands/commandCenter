@@ -4,5 +4,6 @@ export interface User {
     callsign: string;
     role: string;  // 'admin' or 'player'
     deleted?: boolean;
+    team?:string;
   }
   

@@ -16,7 +16,7 @@ export const routes: Routes = [
   { path: 'games', component: GameListComponent },
   { path: 'games/new', component: GameDetailComponent },
   { path: 'games/join/:id/:team', component: JoinGameComponent },
-  { path: 'games/join-team/:id/:team', component: JoinTeamCodeComponent },
+  { path: 'games/join-team/:id/:team', component: JoinGameComponent },
   { path: 'participations', component: ParticipationComponent },
   { path: 'admin/games', component: GameListComponent },
   { path: 'admin/game/new', component: GameDetailComponent },

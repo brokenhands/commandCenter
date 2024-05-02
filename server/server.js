@@ -177,7 +177,7 @@ app.get('/users-by-game/:gameId', async (req, res) => {
 
   try {
     const participants = await Participation.aggregate([
-      { $match: { gameId: mongoose.Types.ObjectId(gameId) } },
+      { $match: { gameId: new mongoose.Types.ObjectId(gameId) } },
       {
         $lookup: {
           from: User.collection.name,
