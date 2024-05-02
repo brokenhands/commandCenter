@@ -6,7 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { GameService } from '../../services/game.service';
 
 @Component({
-  selector: 'app-user-list',
+  selector: 'app-game-players-list',
   templateUrl: './game-player-list.component.html',
   styleUrls: ['./game-player-list.component.scss'],
   standalone: true,
