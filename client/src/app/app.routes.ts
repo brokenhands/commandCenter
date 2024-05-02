@@ -8,11 +8,15 @@ import { UserListComponent } from './components/admin/user-list/user-list.compon
 import { NewUserFormComponent } from './components/admin/new-user-form/new-user-form.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { GameViewComponent } from './components/game-view/game-view.component';
+import { JoinTeamCodeComponent } from './components/join-team-code/join-team-code.component';
+import { JoinGameComponent } from './components/join-game/join-game.component';
 
 export const routes: Routes = [
   { path: '', component: NavBarComponent, pathMatch: 'full' },
   { path: 'games', component: GameListComponent },
   { path: 'games/new', component: GameDetailComponent },
+  { path: 'games/join/:id/:team', component: JoinGameComponent },
+  { path: 'games/join-team/:id/:team', component: JoinTeamCodeComponent },
   { path: 'participations', component: ParticipationComponent },
   { path: 'admin/games', component: GameListComponent },
   { path: 'admin/game/new', component: GameDetailComponent },
