@@ -2,17 +2,19 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GameService } from '../../services/game.service';
 import { RouterModule } from '@angular/router';
-import { Game } from '../../models';
+import { Game, User } from '../../models';
 import { MatCardModule } from '@angular/material/card';
 import { DatePipe } from '@angular/common';
 import { GamePlayerListComponent } from '../game-player-list/game-player-list.component';
-
+import { FormGroup, FormBuilder, Validators,ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { UserService } from '../../services/user.service';
 
 
 @Component({
   selector: 'app-game-view',
   standalone: true,
-  imports: [RouterModule, MatCardModule, DatePipe, GamePlayerListComponent],
+  imports: [RouterModule, MatCardModule, DatePipe, GamePlayerListComponent,MatSelectModule,ReactiveFormsModule],
   templateUrl: './game-view.component.html',
   styleUrl: './game-view.component.scss'
 })
@@ -20,10 +22,13 @@ export class GameViewComponent {
   constructor(
     private gameService: GameService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ){}
   gameId: string
   game: Game
+  playerForm: FormGroup;
+  users:User[];
 
   ngOnInit(): void {
     this.gameId = this.route.snapshot.paramMap.get('id');
@@ -33,5 +38,17 @@ export class GameViewComponent {
         this.game = game
       });
     }
+    this.userService.getUsers().subscribe({
+      next: (users) => this.users = users.filter(user => !user.deleted), // Assuming 'deleted' field marks soft-deleted users
+      error: (err) => console.error('Error loading users:', err)
+    });
+
+  }
+
+  onSubmit(event: Event): void {
+    event.preventDefault();
+        this.gameService.addPlayerToGame(this.playerForm['playerId'], this.gameId).subscribe(() => {
+          this.router.navigate(['/admin/games']);
+        });
   }
 }
