@@ -6,9 +6,10 @@ import { ParticipationComponent } from './components/participation/participation
 import { GameDeleteComponent } from './components/admin/game-delete/game-delete.component';
 import { UserListComponent } from './components/admin/user-list/user-list.component';
 import { NewUserFormComponent } from './components/admin/new-user-form/new-user-form.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/games', pathMatch: 'full' },
+  { path: '', component: NavBarComponent, pathMatch: 'full' },
   { path: 'games', component: GameListComponent },
   { path: 'games/new', component: GameDetailComponent },
   { path: 'participations', component: ParticipationComponent },
